@@ -16,14 +16,14 @@ const EventItem = ({ info }) => {
   }, [showOptions]);
 
   const handleClickApprove = () => {
-    event.setProp("backgroundColor", "#71FF33");
+    event.setProp("backgroundColor", "#198754");
     event.setProp("textColor", "black");
     setIsCancel(false);
     setShowOptions(false);
   };
 
   const handleClickCancel = () => {
-    event.setProp("backgroundColor", "#EC4442");
+    event.setProp("backgroundColor", "#DC3545");
     setIsCancel(true);
     setShowOptions(false);
   };

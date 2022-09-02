@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/styles.min.css";
 import EventCalendar from "./components/EventCalendar";
 
 function App() {
