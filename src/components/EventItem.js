@@ -1,14 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const EventItem = ({ info, calendarRef }) => {
+const EventItem = ({ info }) => {
   const [showOptions, setShowOptions] = useState(false);
   const [isCanceled, setIsCancel] = useState(false);
 
   const { event } = info;
 
   const handleClick = () => {
-    setShowOptions((showOptions) => !showOptions);
+    setShowOptions(!showOptions);
   };
 
   useEffect(() => {
@@ -18,14 +18,25 @@ const EventItem = ({ info, calendarRef }) => {
   const handleClickApprove = () => {
     event.setProp("backgroundColor", "#71FF33");
     event.setProp("textColor", "black");
-    setShowOptions((showOptions) => !showOptions);
-    console.log(isCanceled);
+    setIsCancel(false);
+    setShowOptions(false);
   };
 
   const handleClickCancel = () => {
     event.setProp("backgroundColor", "#EC4442");
-    setIsCancel((isCanceled) => !isCanceled);
-    setShowOptions((showOptions) => !showOptions);
+    setIsCancel(true);
+    setShowOptions(false);
+  };
+
+  const handleClickDelete = () => {
+    event.remove();
+  };
+
+  const handleEdit = (info) => {
+    const eventNamePrompt = prompt("Enter, event name");
+    if (eventNamePrompt) {
+      event.setProp("title", eventNamePrompt);
+    }
   };
 
   return (
@@ -38,6 +49,8 @@ const EventItem = ({ info, calendarRef }) => {
           <div className="eventOptions">
             <button onClick={handleClickApprove}>Approve</button>
             <button onClick={handleClickCancel}>Cancel</button>
+            <button onClick={handleClickDelete}>Delete</button>
+            <button onClick={handleEdit}>Edit</button>
           </div>
         )}
       </div>

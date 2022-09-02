@@ -12,7 +12,6 @@ import EventItem from "./EventItem";
 
 const EventCalendar = () => {
   const [events, setEvents] = useState([]);
-  const calendarRef = useRef(null);
 
   const handleSelect = (info) => {
     const { start, end, allDay } = info;
@@ -36,18 +35,16 @@ const EventCalendar = () => {
   return (
     <div className="calendar">
       <FullCalendar
-        ref={calendarRef}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+        view={[dayGridPlugin, timeGridPlugin]}
         initialView="dayGridMonth"
         headerToolbar={{
           left: "today,prev,next",
           center: "title",
           right: "dayGridMonth,timeGridWeek,timeGridDay",
         }}
-        eventContent={(info) => (
-          <EventItem info={info} calendarRef={calendarRef} />
-        )}
-        dayMaxEvents={5}
+        eventContent={(info) => <EventItem info={info} />}
+        dayMaxEvents={3}
         aspectRatio={6}
         height={600}
         editable={true}
