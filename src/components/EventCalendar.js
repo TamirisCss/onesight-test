@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -43,7 +43,7 @@ const EventCalendar = () => {
           center: "title",
           right: "dayGridMonth,timeGridWeek,timeGridDay",
         }}
-        eventContent={(info) => <EventItem info={info} />}
+        eventContent={(info) => <EventItem info={info} events={events} />}
         dayMaxEvents={3}
         aspectRatio={6}
         height={600}
